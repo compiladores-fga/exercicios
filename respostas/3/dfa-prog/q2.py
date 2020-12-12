@@ -3,13 +3,13 @@
 #===============================
 
 # Conjunto de estados válidos
-Q = {"A", "B", "C", "D"}
+Q = {"C"}
 
 # Alfabeto de entrada
 Σ = {"a", "b", "c"}
 
 # Estado inicial
-q0 = "A"
+q0 = "B"
 
 # Conjunto de estados finais
 F = {"D"}

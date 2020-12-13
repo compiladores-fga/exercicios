@@ -47,4 +47,5 @@ if __name__ == "__main__":
         print(random.choice([h, p, p, img])())
         print()
 
+        
     print("</body>")

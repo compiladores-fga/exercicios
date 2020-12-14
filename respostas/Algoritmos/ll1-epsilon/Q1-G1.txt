@@ -1,0 +1,11 @@
+S -> a S b
+S -> ε
+
+
+	|   a   |    b   |    $   |
+===============================
+S   |   1   |        |    2   |
+
+
+nesse caso a gramática so aceitara um input vazio, pois a unica opção fora o input vazio
+vai gerar um loop infinito.

@@ -23,7 +23,7 @@ def p():
 def date():
     date = f"{rint(1000, 2050):04}-{rint(1, 13):02}-{rint(1, 31):02}"
     if random.random() < 0.33:
-        date += f"T{rint(0, 24):02}:{rint(0, 60):02}"
+        date += f"T{rint(0, 24):02}:{rint(0, 60):02}:{rint(0, 60):02}"
         if random.random() < 0.5:
             date += f"+{rint(0, 24):02}:{random.choice([0, 30]):02}"
     return date

@@ -1,8 +1,0 @@
-1.  S ⟶ a
-2.  S ⟶ ( S )
-3.  S ⟶ S *
-4.  S ⟶ S S
-5.  S ⟶ S | S
-
-nas linhas 3, 4 e 5 a lógica nao conseguirá decidir qual caminho tomar sem olhar para o proximo simbolo, portanto
-não é valido para LL(1).

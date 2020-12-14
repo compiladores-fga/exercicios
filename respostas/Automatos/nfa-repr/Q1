@@ -1,0 +1,1 @@
+O automato é caracterizado como NFA quando um estado possui mais de uma transição com a mesma entrada.

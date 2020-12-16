@@ -1,6 +1,10 @@
-# ===============================
-# Autômato Determinístico Finito
-# ===============================
+'''
+nome = "Fernando Miranda Calil"
+matricula = "19/0106565"
+email = "ilusdasilva@email.com"
+usuario_github = "ilus1"
+'''
+
 
 # Conjunto de estados válidos
 Q = {"A", "B", "C", "D"}

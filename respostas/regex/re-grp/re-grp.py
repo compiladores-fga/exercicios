@@ -31,7 +31,6 @@ if __name__ == "__main__":
     regex = re.compile(r"(?P<year>\d\d\d\d)-(?P<month>\d\d)-(?P<day>\d\d)(?P<H>T\d\d:\d\d:\d\d)?(?P<TZ>\d:\d)?")
 
     dates = []
-    print(dates)
 
     for date in regex.finditer(text):
         try:

@@ -1,0 +1,217 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, automata, graphs, graphdrawing, quotes}
+\usegdlibrary{force, layered}
+
+\usepackage[counterclockwise]{rotating}
+\usepackage[unicode]{hyperref}
+\usepackage{placeins}
+
+\title{Respostas - Autômatos, \texttt{[nfa-thompson]}}
+\author{Davi Antônio da Silva Santos}
+\begin{document}
+
+\section{Questão Q1}
+\subsection{Item 1}
+\texttt{ab|c} (figura \ref{fig:q1_1_nfa_e})
+
+\begin{figure}[htb]
+	\centering
+	\begin{tikzpicture}[>=stealth,shorten >=1pt,auto, layered layout, grow=right, sibling distance=2cm, level distance=2cm]
+	\node[initial,state]   (A)  {$A$};
+	\node[state]           (B)  {$B$};
+	\node[state]           (C)  {$C$};
+	\node[state]           (D)  {$D$};
+	\node[state]           (E)  {$E$};
+	\node[state]           (F)  {$F$};
+	\node[state,accepting] (G)  {$G$};
+
+	\graph{
+		(A) -> [edge label=$\epsilon$] (B),
+		(A) -> [edge label=$\epsilon$] (E),
+
+		(B) -> [edge label=a]          (C),
+		(C) -> [edge label=b]          (D),
+		(D) -> [edge label=$\epsilon$] (G),
+
+		(E) -> [edge label=c]          (F),
+		(F) -> [edge label=$\epsilon$] (G)
+	};
+
+	\end{tikzpicture}
+	\caption{Diagrama do NFA-$\epsilon$.}
+	\label{fig:q1_1_nfa_e}
+\end{figure}
+\FloatBarrier
+
+\subsection{Item 2}
+\texttt{ab(cd|$\epsilon$)} (figura \ref{fig:q1_2_nfa_e})
+
+\begin{figure}[htb]
+	\centering
+	\begin{tikzpicture}[>=stealth,shorten >=1pt,auto, layered layout, grow=right, sibling distance=2cm, level distance=1.8cm]
+	\node[initial,state]   (A)  {$A$};
+	\node[state]           (B)  {$B$};
+	\node[state]           (C)  {$C$};
+	\node[state]           (D)  {$D$};
+	\node[state]           (E)  {$E$};
+	\node[state]           (F)  {$F$};
+	\node[state]           (G)  {$G$};
+	\node[state]           (H)  {$H$};
+	\node[state,accepting] (I)  {$I$};
+
+	\graph{
+		(A) -> [edge label=a]          (B),
+		(B) -> [edge label=b]          (C),
+		(C) -> [edge label=$\epsilon$] (D),
+		(C) -> [edge label=$\epsilon$] (G),
+
+		(D) -> [edge label=c]          (E),
+		(E) -> [edge label=d]          (F),
+		(F) -> [edge label=$\epsilon$] (I),
+
+		(G) -> [edge label=$\epsilon$] (H),
+		(H) -> [edge label=$\epsilon$] (I),
+	};
+
+	\end{tikzpicture}
+	\caption{Diagrama do NFA-$\epsilon$.}
+	\label{fig:q1_2_nfa_e}
+\end{figure}
+\FloatBarrier
+
+\subsection{Item 3}
+\texttt{a*b*} (figura \ref{fig:q1_3_nfa_e})
+
+\begin{figure}[htb]
+	\centering
+	\begin{tikzpicture}[>=stealth,shorten >=1pt,auto, layered layout, grow=right, sibling distance=2cm, level distance=1.8cm]
+	\node[initial,state]   (A)  {$A$};
+	\node[state]           (B)  {$B$};
+	\node[state]           (C)  {$C$};
+	\node[state]           (D)  {$D$};
+	\node[state]           (E)  {$E$};
+	\node[state]           (F)  {$F$};
+	\node[state,accepting] (G)  {$G$};
+
+	\graph{
+		(A) -> [edge label=$\epsilon$] (B),
+		(A) -> [edge label=$\epsilon$] (D),
+		(B) -> [edge label=a]          (C),
+		(C) -> [edge label=$\epsilon$] (D),
+		(C) -> [edge label=$\epsilon$,bend left=50] (B),
+		(D) -> [edge label=$\epsilon$] (E),
+		(D) -> [edge label=$\epsilon$] (G),
+		(E) -> [edge label=b]          (F),
+		(F) -> [edge label=$\epsilon$] (G),
+		(F) -> [edge label=$\epsilon$,bend left=50] (E),
+	};
+
+	\end{tikzpicture}
+	\caption{Diagrama do NFA-$\epsilon$.}
+	\label{fig:q1_3_nfa_e}
+\end{figure}
+\FloatBarrier
+
+\subsection{Item 4}
+\texttt{a(b|c)d} (figura \ref{fig:q1_4_nfa_e})
+
+\begin{figure}[htb]
+	\centering
+	\begin{tikzpicture}[>=stealth,shorten >=1pt,auto, layered layout, grow=right, sibling distance=2cm, level distance=1.8cm]
+	\node[initial,state]   (A)  {$A$};
+	\node[state]           (B)  {$B$};
+	\node[state]           (C)  {$C$};
+	\node[state]           (D)  {$D$};
+	\node[state]           (E)  {$E$};
+	\node[state]           (F)  {$F$};
+	\node[state]           (G)  {$G$};
+	\node[state,accepting] (H)  {$H$};
+
+	\graph{
+		(A) -> [edge label=a]          (B),
+
+		(B) -> [edge label=$\epsilon$] (C),
+		(B) -> [edge label=$\epsilon$] (F),
+
+		(C) -> [edge label=b]          (D),
+		(D) -> [edge label=$\epsilon$] (E),
+
+		(F) -> [edge label=c]          (G),
+		(G) -> [edge label=$\epsilon$] (E),
+
+		(E) -> [edge label=d]          (H),
+	};
+
+	\end{tikzpicture}
+	\caption{Diagrama do NFA-$\epsilon$.}
+	\label{fig:q1_4_nfa_e}
+\end{figure}
+\FloatBarrier
+
+\subsection{Item 5}
+\texttt{b(a|b)*a|a} (figura \ref{fig:q1_5_nfa_e})
+
+\begin{figure}[htb]
+	\centering
+	\begin{sideways}
+	\begin{minipage}{\textheight}
+	\begin{tikzpicture}[>=stealth,shorten >=1pt,auto, layered layout, grow'=right, sibling distance=2cm, level distance=2cm]
+	\node[initial,state]   (A)  {$A$};
+	\node[state]           (B)  {$B$};
+	\node[state]           (C)  {$C$};
+	\node[state]           (D)  {$D$};
+	\node[state]           (E)  {$E$};
+	\node[state]           (F)  {$F$};
+	\node[state]           (G)  {$G$};
+	\node[state]           (H)  {$H$};
+	\node[state]           (I)  {$I$};
+	\node[state]           (J)  {$J$};
+	\node[state]           (K)  {$K$};
+	\node[state]           (L)  {$L$};
+	\node[state]           (M)  {$M$};
+	\node[state,accepting] (N)  {$N$};
+
+	\graph{
+		(A) -> [edge label=b]          (B),
+
+		(B) -> [edge label=$\epsilon$] (C),
+		(B) -> [edge label=$\epsilon$] (L),
+
+		(C) -> [edge label=$\epsilon$] (D),
+		(C) -> [edge label=$\epsilon$] (H),
+
+		(D) -> [edge label=$\epsilon$] (E),
+		(D) -> [edge label=$\epsilon$] (J),
+
+		(E) -> [edge label=a]          (F),
+		(F) -> [edge label=$\epsilon$] (G),
+		(G) -> [edge label=$\epsilon$] (D),
+		(G) -> [edge label=$\epsilon$] (H),
+
+		(J) -> [edge label=b]          (K),
+		(K) -> [edge label=$\epsilon$] (G),
+
+		(H) -> [edge label=a]          (I),
+		(I) -> [edge label=$\epsilon$] (N),
+
+		(L) -> [edge label=a]          (M),
+		(M) -> [edge label=$\epsilon$] (N),
+	};
+
+	\end{tikzpicture}
+	\end{minipage}
+	\end{sideways}
+	\caption{Diagrama do NFA-$\epsilon$.}
+	\label{fig:q1_5_nfa_e}
+\end{figure}
+
+\end{document}

@@ -29,10 +29,10 @@ json_grammar = r"""
     %import common.SIGNED_NUMBER
     %import common.WS
     %ignore WS
-    #ignore C like comments
+    
     %ignore /\/\/.*/
 """
-
+    #ignore C like comments two lines above
 
 class TreeToJson(Transformer):
     @v_args(inline=True)

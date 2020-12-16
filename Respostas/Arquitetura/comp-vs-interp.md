@@ -5,3 +5,4 @@ Compiladores tendem a ser mais rápidos e mais confiáveis que interpretadores p
 
 ### Q2
 Uma implementação "compilada" do Python é o PyPy. Através da compilação Just-In-Time(JIT), o PyPy identifica bytecodes que são executados frequentemente e os compila para código de máquina nativo, que são mais rápidos. Ou seja, essa é uma técnica híbrida que mistura as vantagens de compiladores e interpretadores.
+Link de referência: https://www.pypy.org/

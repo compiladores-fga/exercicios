@@ -11,9 +11,9 @@ Gramática não compatível com LL(1) por possuir recursividade e ambiguidade em
 3.  S ⟶ ~ S
 4.  S ⟶ n
 
-- - - - | + | * | ~ | n | $ 
----     | - | - | - | - | - 
-   S    | 1 | 2 | 3 | 4 | 
+--- | + | * | ~ | n | $ 
+--- | - | - | - | - | - 
+ S  | 1 | 2 | 3 | 4 | 
 
 First(S) = {+,*,~,n}
 

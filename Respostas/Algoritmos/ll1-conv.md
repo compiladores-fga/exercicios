@@ -1,11 +1,6 @@
 ### Q1
 
 #### G1
-1.  S ⟶ a
-2.  S ⟶ ( S )
-3.  S ⟶ S *
-4.  S ⟶ S S
-5.  S ⟶ S | S
 
 Gramática não compatível com LL(1) por possuir recursividade e ambiguidade em suas regras.
 
@@ -25,10 +20,5 @@ First(S) = {+,*,~,n}
 Follow(S) = {$}
 
 #### G3
-1.  S ⟶ S + S
-2.  S ⟶ S * S
-3.  S ⟶ - S
-4.  S ⟶ ( S )
-5.  S ⟶ n
 
 Gramática compatível com LL(1).

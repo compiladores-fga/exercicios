@@ -7,5 +7,4 @@
 S   |   1   |        |    2   |
 
 
-nesse caso a gramática so aceitara um input vazio, pois a unica opção fora o input vazio
-vai gerar um loop infinito.
+nesse caso a gramática aceitaria input vazio, ab, aabb, aaabbb e quantidades iguais de a's e b's

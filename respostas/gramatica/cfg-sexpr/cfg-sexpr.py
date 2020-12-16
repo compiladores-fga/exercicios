@@ -1,16 +1,17 @@
 from lark import Lark, InlineTransformer
 
 grammar = Lark(r"""
-?start : expr
-?expr  : expr "+" term -> expr
-       | term
-?term  : term "*" atom -> term
-       | atom
-?atom  : NUMBER        -> atom
-       | "(" expr ")"
-NUMBER : /\d+/
-%ignore /\s+/
-""")
+                ?start : expr
+                ?expr  : expr "+" term -> expr
+                       | term
+                ?term  : term "*" atom -> term
+                       | atom
+                ?atom  : NUMBER        -> atom
+                       | "(" expr ")"
+                NUMBER : /\d+/
+                %ignore /\s+/
+                """
+               )
 
 
 class Transformer(InlineTransformer):

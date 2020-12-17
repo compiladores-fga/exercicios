@@ -10,7 +10,7 @@ a) ![a](q2a.jpg)
 b) ![a](q2b.jpg)
 c) ![a](q2c.jpg)
 
-** 3** Proponha uma mudança simples para transformá-lo em um DFA sem alterar a linguagem que ele representa.
+**3** Proponha uma mudança simples para transformá-lo em um DFA sem alterar a linguagem que ele representa.
 
 ![a](q3.jpg)
 

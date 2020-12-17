@@ -31,15 +31,20 @@ json_grammar = r"""
     %import common.ESCAPED_STRING
     %import common.SIGNED_NUMBER
     %import common.WS
+    
     %ignore /\/{2}.*/
     %ignore WS
 """
 
 
 class TreeToJson(Transformer):
-    @v_args(inline=True)
+    @v_args(inline=True)    
     def string(self, s):
         return s[1:-1].replace('\\"', '"')
+
+    def name(self, key):
+        key = str(key[0])
+        return  key 
 
     array = list
     pair = tuple
@@ -81,8 +86,8 @@ def test():
             "numbers"      : [ 0, 1, -2, 3.3, 4.4e5, 6.6e-7 ],
             "strings"      : [ "This", [ "And" , "That", "And a \\"b" ] ],
             "comma"        : [1, {"n": 42,}, 3,],
-            name           : 15,
-            all            : [Infinity, {nothing : NaN,},], //comment
+            algo           : 15,
+            juntos            : [Infinity, {nothing : NaN,},], //comment
             //comment
             "constants"    : [Infinity, -Infinity, NaN],
             "nothing"      : null

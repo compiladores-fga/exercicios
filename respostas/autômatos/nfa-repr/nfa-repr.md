@@ -6,12 +6,12 @@
 
 **2 - ** Mostre o conjunto de estados que o autômato percorre para analisar as strings: a) 42 b) 3.14 c) 123. e diga em cada caso se a string foi aceita ou não.
 
-a) ![a](q2a)
-b) ![a](q2b)
-c) ![a](q2c)
+a) ![a](q2a.jpg)
+b) ![a](q2b.jpg)
+c) ![a](q2c.jpg)
 
 ** 3 - ** Proponha uma mudança simples para transformá-lo em um DFA sem alterar a linguagem que ele representa.
 
-![a](q3)
+![a](q3.jpg)
 
 ### **Q2)** 

@@ -4,6 +4,12 @@ Simple JSON Parser
 
 The code is short and clear, and outperforms every other parser (that's written in Python).
 For an explanation, check out the JSON parser tutorial at /docs/json_tutorial.md
+
+Modifications by Davi Antônio da Silva Santos:
+1. Add support to parse C comments (they are discarded by the parser)
+2. Add support for an optional comma when defining non-empty objects or arrays
+3. Add support to declare names with only letters and underscores without double quotes
+4. Add support for the Infinity, -Infinity and NaN constants
 """
 import sys
 
@@ -70,20 +76,23 @@ class TreeToJson(Transformer):
 #     return TreeToJson().transform(json_parser.parse(x))
 
 ### Create the JSON parser with Lark, using the LALR algorithm
-json_parser = Lark(json_grammar, parser='lalr',
-                   # Using the standard lexer isn't required, and isn't usually recommended.
-                   # But, it's good enough for JSON, and it's slightly faster.
-                   lexer='standard',
-                   # Disabling propagate_positions and placeholders slightly improves speed
-                   propagate_positions=False,
-                   maybe_placeholders=False,
-                   # Using an internal transformer is faster and more memory efficient
-                   transformer=TreeToJson())
+json_parser = Lark(
+    json_grammar,
+    parser="lalr",
+    # Using the standard lexer isn't required, and isn't usually recommended.
+    # But, it's good enough for JSON, and it's slightly faster.
+    lexer="standard",
+    # Disabling propagate_positions and placeholders slightly improves speed
+    propagate_positions=False,
+    maybe_placeholders=False,
+    # Using an internal transformer is faster and more memory efficient
+    transformer=TreeToJson(),
+)
 parse = json_parser.parse
 
 
 def test():
-    test_json = '''
+    test_json = """
         {
             "empty_object" : {},
             "empty_array"  : [],
@@ -92,14 +101,15 @@ def test():
             "strings"      : [ "This", [ "And" , "That", "And a \\"b" ] ],
             "nothing"      : null
         }
-    '''
+    """
 
     j_old = parse(test_json)
     print(j_old)
     import json
+
     assert j_old == json.loads(test_json)
     print()
-    test_json = '''
+    test_json = """
         // This is a test object
         {
             empty_object : {}, // Empty object (without double quotes)
@@ -109,18 +119,18 @@ def test():
             "strings"      : [ "This", [ "And" , "That", "And a \\"b" ] ], // Nested string array
             "nothing"      : null, // Optional comma
         }
-    '''
+    """
     j_new = parse(test_json)
     print(j_new)
     assert j_new == j_old
 
     print("Should fail:")
-    to_fail = '''
+    to_fail = """
         {
             "empty_object" : {,},
             "empty_array" : [,]
         }
-    '''
+    """
     try:
         j_fail = parse(to_fail)
         print(j_fail)
@@ -131,17 +141,18 @@ def test():
         assert None
 
     print("Try with infinity and NaN")
-    expected = {"odd_list" : [float("inf"), -float("inf"), float("nan"), float(0)]}
-    test_inf_nan = '''
+    expected = {"odd_list": [float("inf"), -float("inf"), float("nan"), float(0)]}
+    test_inf_nan = """
         // Test with Infinity and NaN
         {
             odd_list : [Infinity, -Infinity, NaN, 0,]
         }
-    '''
+    """
     j_inf_nan = parse(test_inf_nan)
     print(j_inf_nan)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     test()
-    #with open(sys.argv[1]) as f:
-        #print(parse(f.read()))
+    # with open(sys.argv[1]) as f:
+    # print(parse(f.read()))

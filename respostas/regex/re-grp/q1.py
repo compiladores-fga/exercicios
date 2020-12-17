@@ -12,23 +12,28 @@ target = datetime.date(1997, 3, 22)
 nearest_date = target
 smallest_delta = None
 
+# Calcula a diferença de tempo para cada data e guarda a data com a menor diferença
 for found in regex.finditer(text):
     groups = found.groupdict()
     print(groups)
     try:
-        found_date = datetime.date(int(groups["year"]), int(groups["month"]), int(groups["day"]))
+        found_date = datetime.date(
+            int(groups["year"]), int(groups["month"]), int(groups["day"])
+        )
         print(found_date)
         delta = abs(found_date - target)
         print(f"Delta of {found_date} is {delta}")
         if smallest_delta == None:
             smallest_delta = delta
         else:
-            if (delta < smallest_delta):
+            if delta < smallest_delta:
                 smallest_delta = delta
                 nearest_date = found_date
     except ValueError as e:
-        print(f"Invalid date {groups}");
+        print(f"Invalid date {groups}")
     print()
 
-print(f"Closest date to target {target} is {nearest_date} with delta of {smallest_delta}")
+print(
+    f"Closest date to target {target} is {nearest_date} with delta of {smallest_delta}"
+)
 f.close()

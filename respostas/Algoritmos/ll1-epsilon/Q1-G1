@@ -1,0 +1,10 @@
+1.  S ⟶ a S b
+2.  S ⟶ ε
+
+
+    |   a   |    b   |    $   |
+===============================
+S   |   1   |        |    2   |
+
+
+nesse caso a gramática aceitaria input vazio, ab, aabb, aaabbb e quantidades iguais de a's e b's

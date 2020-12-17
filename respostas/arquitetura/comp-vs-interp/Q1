@@ -1,0 +1,6 @@
+Compilador tem como objetivo traduzir todas as linhas do codigo para outra linguagem,
+geralmente de linguagem de alto nivel para baixo nivel, enquanto o interpretador busca
+traduzir o codigo parte a parte, conforme for necessário. Os dois metodos implementam
+lexer, parser de forma parecida, mas o interpretador acessa a arvore sintatica de forma
+direta para acessar as expressões, enquanto o compilador gera codigo a partir da arvore
+sintatica

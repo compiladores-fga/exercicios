@@ -1,0 +1,10 @@
+r"""
+
+	JSON 		: "[" (elem ("," elem)*)? "]"	
+	LISP 		: "(" elem* ")"
+	LISP-II		: "(" (elem (","? elem)*)? ","? ")"
+	Python		: "[" (elem ("," elem)* ","?)? "]"
+	JavaScript 	: "[" (elem (","(undefined ",")* elem)* ","?(undefined ",")*)? "]"
+
+
+"""

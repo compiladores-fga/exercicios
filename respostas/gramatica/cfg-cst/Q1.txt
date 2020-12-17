@@ -1,0 +1,24 @@
+r"""
+
+
+	expr : expr "+" term
+		| term
+
+	term : term "*" atom
+		| atom
+
+	atom : NUMBER
+		| "(" expr ")"
+
+	NUMBER : /\d+/
+
+
+"""
+
+1.42
+
+erro, nenhum terminal definido para o simbolo [.]
+
+2.2*(11 + 2 * 5)
+
+erro, nenhum terminal definido para o simbolo [.]

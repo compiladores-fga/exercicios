@@ -37,7 +37,7 @@ import re
 
 # Arquivo re-grp-q1.txt possui o conteúdo gerado
 text = open('re-grp-q1.txt', 'r').read()
-regex = re.compile(r'(\d{4})-(\d{2})-(\d{2})(?:T\d{2}:\d{2})?(?:\+\d{2}:\d{2})?')
+regex = re.compile(r'(\d{4})-(\d{2})-(\d{2})(?:T\d{2}:\d{2})?(?:\+\d{2}:\d{2})?(?::\d{2}\+\d{2}:\d{2})?')
 
 dates = regex.findall(text)
 

@@ -17,13 +17,16 @@ Soluta veniam optio laudantium quis porro. Sunt doloribus ea voluptates suscipit
 
 birth = datetime.date(1999,7,16)
 
+# encontrando todas as datas
 matches = re.compile(r"(?P<y>\d{4})-(?P<m>\d\d)-(?P<d>\d\d)(?P<t>T\d\d:\d\d:\d\d)?(?P<tz>\d:\d)?")
 dates = []
 for date in matches.finditer(sample_text):
     dates.append(datetime.date(int(date.groupdict()['y']), int(date.groupdict()['m']), int(date.groupdict()['d'])))
 
-
+# diferença entre aniversario e cada uma das datas
 dates_comparison = [abs(date-birth) for date in dates]
+
+# datas mais proximas
 closest_date = dates[dates_comparison.index(min(dates_comparison))]
 
 # Teste para o texto de exemplo

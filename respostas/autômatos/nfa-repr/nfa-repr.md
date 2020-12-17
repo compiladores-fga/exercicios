@@ -1,0 +1,1 @@
+**Q1)** Resposta: Um NFA toma todos os caminhos possíveis para aquela entrada, e aceita entrada se pelo menos um caminho termina em um estado final.

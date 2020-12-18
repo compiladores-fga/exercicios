@@ -1,0 +1,1 @@
+cada questão está feita em uma imagem de respectivo numero

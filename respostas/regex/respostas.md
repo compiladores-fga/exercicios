@@ -4,14 +4,14 @@
 
 - Resposta:
 
-Pesquisa = (0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])\/(\d{4})
-Regra de Substituição = $2/$1/$3
+Pesquisa = `(0[1-9]|1[0-2])\/(0[1-9]|[12]\d|3[01])\/(\d{4})`<br>
+Regra de Substituição = `$2/$1/$3`
 
 ### Q2 
 
 - Resposta:
 
-Pesquisa = <img src=".+\.gif">
+Pesquisa = `<img src=".+\.gif">`<br>
 Poderia utilizar o módulo `re` do python com a regex `<img src=".+\.gif">`, se utilizar o método `re.findall` e verificar o tamanho da lista ao final do código, como mostrado no código abaixo.
 
 ```python

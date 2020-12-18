@@ -21,7 +21,11 @@ json_grammar = r"""
     array  : "[" [value ("," value)* ","?] "]"
     object : "{" [pair ("," pair)* ","?] "}"
     pair   : string ":" value
+           | optional ":" value
+    
+    optional: /[a-zA-Z_]+/ -> optional_string
     string : ESCAPED_STRING
+    
     %import common.ESCAPED_STRING
     %import common.SIGNED_NUMBER
     %import common.WS
@@ -37,6 +41,10 @@ class TreeToJson(Transformer):
     @v_args(inline=True)
     def string(self, s):
         return s[1:-1].replace('\\"', '"')
+
+    def optional_string(self, token):
+        token = str(token[0])
+        return token
 
     array = list
     pair = tuple
@@ -78,7 +86,8 @@ def test():
             "booleans"     : { "YES" : true, "NO" : false, },
             "numbers054"      : [ 0, 1, -2, 3.3, 4.4e5, 6.6e-7, ],
             "strings"      : [ "This", [ "And" , "That", "And a \\"b" ] ],
-            "nothing"      : null
+            "nothing"      : null,
+            nome          : 20
         }
     '''
 

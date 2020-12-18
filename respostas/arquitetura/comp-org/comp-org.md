@@ -10,7 +10,7 @@
 
 ### Análise léxica
 
-<p align='justify'>A análise léxica é responsável pela leitura do código da entrada de acordo com os simbolos da linguagem agrupando o código em lexemas e formar as sequências tokens.</p>
+<p align='justify'>A análise léxica é responsável pela leitura do código fonte de acordo com os símbolos da linguagem agrupando o código em lexemas e forma as sequências de tokens.</p>
 
 ### Análise sintática
 

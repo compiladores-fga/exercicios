@@ -18,10 +18,17 @@ json_grammar = r"""
           | "true"             -> true
           | "false"            -> false
           | "null"             -> null
+          | inf
+          | nan
     array  : "[" [value ("," value)* ","?] "]"
     object : "{" [pair ("," pair)* ","?] "}"
     pair   : string ":" value
            | optional ":" value
+    
+    ?inf   : "Infinity" -> infinity
+           | "-Infinity" -> minus_infinity
+           
+    ?nan   : "NaN" -> not_a_number
     
     optional: /[a-zA-Z_]+/ -> optional_string
     string : ESCAPED_STRING
@@ -50,6 +57,10 @@ class TreeToJson(Transformer):
     pair = tuple
     object = dict
     number = v_args(inline=True)(float)
+
+    infinity = lambda self, _: float("inf")
+    minus_infinity = lambda self, _: -float("inf")
+    not_a_number = lambda self, _: float("nan")
 
     null = lambda self, _: None
     true = lambda self, _: True
@@ -87,7 +98,10 @@ def test():
             "numbers054"      : [ 0, 1, -2, 3.3, 4.4e5, 6.6e-7, ],
             "strings"      : [ "This", [ "And" , "That", "And a \\"b" ] ],
             "nothing"      : null,
-            nome          : 20
+            nome          : 20,
+            infinity       : [Infinity],
+            minusinfinity  : [-Infinity],
+            notANumber     : [NaN, ]
         }
     '''
 

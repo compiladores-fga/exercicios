@@ -28,10 +28,13 @@ class Transformer(InlineTransformer):
     def atom(self, value):
         return float(value)
 
+
 transformer = Transformer()
+
 
 def ast(x):
     return transformer.transform(grammar.parse(x))
+
 
 assert ast("42") == 42
 assert ast("1 + 1") == ["+", 1, 1]

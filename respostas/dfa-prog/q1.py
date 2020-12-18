@@ -16,6 +16,6 @@ def accepts(transitions,initial,accepting,s):
     else:
       return('Rejeitado')
 
-user_input = input("Digite a sequencia de Estados (a,b,c): ")
+user_input = input("Digite a sequencia entradas ex:'bbb': ")
 
 print(accepts(dfa,'A','D',user_input))

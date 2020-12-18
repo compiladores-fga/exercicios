@@ -18,8 +18,8 @@ json_grammar = r"""
           | "true"             -> true
           | "false"            -> false
           | "null"             -> null
-    array  : "[" [value ("," value)*] "]"
-    object : "{" [pair ("," pair)*] "}"
+    array  : "[" [value ("," value)* ","?] "]"
+    object : "{" [pair ("," pair)* ","?] "}"
     pair   : string ":" value
     string : ESCAPED_STRING
     %import common.ESCAPED_STRING
@@ -75,8 +75,8 @@ def test():
             // Eu sou um comentário em c
             "empty_object" : {},
             "empty_array"  : [],
-            "booleans"     : { "YES" : true, "NO" : false },
-            "numbers"      : [ 0, 1, -2, 3.3, 4.4e5, 6.6e-7 ],
+            "booleans"     : { "YES" : true, "NO" : false, },
+            "numbers054"      : [ 0, 1, -2, 3.3, 4.4e5, 6.6e-7, ],
             "strings"      : [ "This", [ "And" , "That", "And a \\"b" ] ],
             "nothing"      : null
         }

@@ -6,7 +6,7 @@ Analisar o código fonte, identificar lexemas e produzir tokens.
 
 2. Análise sintática
 
-Usar os lexemas da etapa anterior e cria uma árvore sintática para validar a estrutura do programa.
+Usar os lexemas da etapa anterior e criar uma árvore sintática para validar a estrutura do programa.
 
 3. Análise semântica
 

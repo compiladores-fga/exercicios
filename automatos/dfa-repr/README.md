@@ -1,0 +1,1 @@
+no arquivo [dfa.svg](dfa.svg) foi exemplificado um automato que contém ao menos uma transição de 'a' e de 'b'

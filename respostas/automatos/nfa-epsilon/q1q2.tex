@@ -1,0 +1,91 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, automata, graphs, graphdrawing, quotes}
+\usegdlibrary{force, layered}
+
+\usepackage[counterclockwise]{rotating}
+\usepackage[unicode]{hyperref}
+\usepackage{placeins}
+
+\title{Respostas - Autômatos, \texttt{[nfa-epsilon]}}
+\author{Davi Antônio da Silva Santos}
+\begin{document}
+
+\section{Questão Q1}
+\subsection{Item 1}
+Um caminho para \texttt{[aa, a]} é a transição entre os estados A, B, C, D, C, D, C, D, E, F.
+
+\subsection{Item 2}
+Após a entrada \texttt{[aaa} é possível que o autômato esteja nos estados C, D ou E.
+
+\section{Questão Q2}
+\subsection{Item 1}
+Figura \ref{fig:q2_1_nfa}
+
+\begin{figure}[htb]
+	\centering
+	\begin{tikzpicture}[>=stealth,shorten >=1pt,auto, layered layout, grow=right, level distance=2cm, initial where=below]
+	\node[initial,state,accepting] (A)  {$A$};
+	\node[initial,state,accepting] (B)  {$B$};
+	\node[initial,state,accepting] (C)  {$C$};
+	\node[initial,state,accepting] (D)  {$D$};
+
+	\graph{
+		(A) -> [edge label=a]          (B),
+		(A) -> [edge label=b]          (C),
+		(A) -> [edge label=c]          (D),
+		
+		(B) -> [edge label=b]          (C),
+		(B) -> [edge label=c,bend right=90,looseness=1.5]          (D),
+		
+		(C) -> [edge label=c]          (D);
+		{[same layer] (A), (B), (C), (D)};
+	};
+
+	\end{tikzpicture}
+	\caption{Diagrama do NFA sem transições $\epsilon$.}
+	\label{fig:q2_1_nfa}
+\end{figure}
+\FloatBarrier
+
+\subsection{Item 1}
+Figura \ref{fig:q2_2_nfa}
+
+\begin{figure}[htb]
+	\centering
+	\begin{tikzpicture}[>=stealth,shorten >=1pt,auto, layered layout, grow=right, level distance=3.5cm]
+	\node[initial,state] (A)  {$A$};
+	\node[state] (B)  {$B$};
+	\node[state] (C)  {$C$};
+	\node[state,accepting] (D)  {$D$};
+	\node[draw=none] (dummy) {};
+	
+	\graph{
+		(A) -> [edge label=a]          (B),
+		
+		(B) ->[edge label=a,loop below] (dummy),
+		(B) -> [edge label=b]          (C),
+		
+		(C) -> [edge label=a, bend right=60]          (B),
+		(C) -> [edge label=b,loop below]          (dummy),
+		(C) -> [edge label=c]          (D),
+		
+		(D) -> [edge label=a, bend right=60]          (B),
+		(D) -> [edge label=b, bend right=60]          (C),
+		(D) -> [edge label=c,loop below]          (dummy),		
+	};
+
+	\end{tikzpicture}
+	\caption{Diagrama do NFA sem transições $\epsilon$.}
+	\label{fig:q2_2_nfa}
+\end{figure}
+
+\end{document}

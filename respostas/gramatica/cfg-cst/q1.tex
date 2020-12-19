@@ -1,0 +1,56 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazilian]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, automata, graphs, graphdrawing, quotes}
+\usegdlibrary{force, layered, trees}
+
+\usepackage[counterclockwise]{rotating}
+\usepackage[unicode]{hyperref}
+\usepackage{placeins}
+
+\title{Respostas - Gramática, \texttt{[cfg-cst]}}
+\author{Davi Antônio da Silva Santos}
+\begin{document}
+
+\section{Questão Q1}
+\subsection{Item 1}
+\begin{figure}[htb]
+	\centering
+	\begin{tikzpicture}[>=stealth,shorten >=1pt,auto, tree layout]
+
+	\graph[nodes={circle, draw}, minimum number of children=2]{
+		"expr" -> "term" -> "atom" -> "NUMBER" -> "42"
+	};
+
+	\end{tikzpicture}
+	\caption{Árvore sintática concreta da entrada \texttt{42}.}
+\end{figure}
+\FloatBarrier
+
+\subsection{Item 2}
+\begin{figure}[htb]
+	\centering
+	\begin{tikzpicture}[>=stealth,shorten >=1pt,auto, tree layout]
+
+	\graph[nodes={circle, draw}, minimum number of children=2]{
+		"expr" ->
+		{"term" -> "atom" -> "NUMBER" -> "2",
+		"*",
+		"term1"[as=term] ->
+		{"(", "expr1"[as=expr] ->
+		{"term2"[as=term] -> "atom1"[as=atom] -> "NUMBER1"[as=NUMBER] -> 11, "+", "term3"[as=term] ->
+		{"atom2"[as=atom] -> "NUMBER2"[as=NUMBER] -> "21"[as=2], "*2"[as=*], "atom3"[as=atom] -> "NUMBER3"[as=NUMBER] -> "5"}}, ")"}}
+	};
+
+	\end{tikzpicture}
+	\caption{Árvore sintática concreta da entrada \texttt{2*(11+2*5)}.}
+\end{figure}
+
+\end{document}

@@ -1,5 +1,6 @@
 import random
 from faker import Faker
+import re
 
 fake = Faker("la")
 
@@ -48,3 +49,4 @@ if __name__ == "__main__":
         print()
 
     print("</body>")
+

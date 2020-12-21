@@ -22,6 +22,7 @@ Regex          | String
 
 **Q2)** Resolva um problema da categoria "intermediate" ou "experienced" do site Regex Crosswords (https://regexcrossword.com/challenges/intermediate/puzzles/5). Anexe um screenshot ou digite a resposta aqui como prova da solução.
 
+![printRegexcrossword](./assets/regexcrossword.png)
 
 **Q3)** Discuta se é possível criar um conjunto de exemplos de strings para cada linguagem em Q1 de tal forma que cada exemplo seja aceito por apenas uma linguagem? Em caso positivo, dê um exemplo e em caso negativo, explique o motivo. 
 
@@ -35,8 +36,16 @@ Resolva 2 questões para ganhar a competência.
 **Q1)** Crie uma expressões regulares para cada caso abaixo:
 
 1. Números binários múltiplos de 4, sem zeros a esquerda.
+
+    Resposta: ```r"^[1][1|0]*00$"```
+
 2. Datas no formato DD/MM/AAAA
+
+    Resposta: ```r"^[0-9]{2}/[0-9]{2}/[0-9]{4}$"```   
+
 3. Endereços de e-mail com <nome>@<dominio>.<com>.<br>. O domínio pode conter qualquer número de sub-domínios e cada parte, incluindo o nome é formada por letras ou hífens.
+    
+    Resposta: ```r"^[^@]+@[^@]+\.[^@]{1,}$"```
 
 **Q2)** O dicionário abaixo contêm uma associação de expressões regulares e valores. Você deve inventar valores para cada entrada de tal modo que cada par (regex, st) possua as seguinte propriedades:
 
@@ -73,9 +82,13 @@ Encontre o maior dicionário possível com esta propriedade.
 **Q1)** Reescreva as expressões regulares Python utilizando apenas os operadores básicos de alternativa (`|`), repetição (`*`), concatenação e produções ε.
 
 1. `r"[a-c]*"`
+   Resposta: `r"(a|b|c)*`
 2. `r"[ab]+"`
+   Resposta: `r"(a|b)(a|b)*`
 3. `r"a?b?c?"`
+   Resposta: `r"(a|)(b|)(c|)`
 4. `r"[abde]|ab|c?"`
+    Resposta: `r"(a|b|d|e)|ab|(c|)`
 
 
 
@@ -85,14 +98,23 @@ Esta competência testa a capacidade de utilizar expressões regulares em ferram
 
 **Q1)** O script em [arquivos/re-pat-q1.py] gera um texto que contêm várias datas no formato americano MM/DD/AAAA. Use uma regra de substituição que converta todas estas datas para o formato brasileiro DD/MM/AAAA. Diga qual expressão regular e qual regra de substituição foi utilizada no seu editor de código.  
 
+<strong>Resposta: ``dataBR = (re.sub(r'([0-9]{2})/([0-9]{2})/([0-9]{4})',r'\2/\1/\3', frase))``<br>
+Arquivo: resposta/regex/re-pat-q1.py
+</strong>
+
 **Q2)** O arquivo [arquivos/re-pat-q2.py] gera um html algumas tags `<img>` que fazem referências a arquivos ".gif" como em `<img src="path-to-img.gif">`. Crie uma expressão regular que encontre todas extensões `.gif` **que aparecem dentro do atributo src das tags de img**. Descreva como você poderia utilizar esta expressão em conjunto com alguma outra ferramenta para contar o número de ocorrências destas imagens no documento.
 
+Resposta: ``<img\s+src=\"(.|..?[/a-zA-Z0-9]+\.gif)\">``
+
+<p align="justify">Poderia realizar o método findall para encontrar todas as ocorrências e verificar se todos os gifs foram armazenados no diretório correto, caso exista algum caminho incorreto poderia ser utilizado o método re.sub para corrigir o caminho</p>
 
 ## [re-grp]: Aplicar expressões regulares e utilizar grupos e sub-padrões para extrair informação a partir de um texto
 
 **Q1)** Crie um programa para identificar datas no formato `AAAA-MM-DDTHH:MM:SS+HH:MM`, onde tanto a parte da hora (`THH:MM:SS`) quanto a parte do fuso horário (`+HH:MM`) são opcionais. Extraia a informação como um objeto do tipo `datetime.date()` para validar o mês e dia e determine qual data encontrada no texto é a mais próxima do seu aniversário.
 
 O texto de exemplo pode ser gerado pelo arquivo [arquivos/re-grp-q1.py].
+
+<strong>Resposta está no aquivo: re-grp-q1.py localizado no diretorio: respostas/regex</strong>
 
 
 ## [lex-ler]: Compreender a motivação e mecanismos da análise léxica

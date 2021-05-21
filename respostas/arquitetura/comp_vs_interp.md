@@ -1,0 +1,7 @@
+Q1
+O interpretador realiza a análise léxica, sintática e semântica da primeira instrução do código fonte, realiza sua conversão em linguagem de máquina e ordena a execução da instrução e após isso o interpretador repete esse processo até a última instrução do código fonte. Caso esse programa for executado pela segunda vez o interpretador realizará novamente as análises sintáticas e léxicas pois os comandos em linguagem de máquina não ficam salvos para futuras execuções.
+Já o compilador recebe a primeira instrução do código fonte e a converte linguagem de máquina, realizando esse processo até a última instrução do código fonte. Caso todas as instruções tenham sido convertidas para linguagem de máquina sem a ocorrência de erros, o compilador retorna para a primeira instrução (já convertida em linguagem de máquina) realizando a sua execução e repete esse processo para todas as instruções do código fonte, salvando essas instruções em um novo programa executável. Caso o programa seja executado por uma segunda vez não será necessário realiar todo esse processo, pois as intruções em linguagem de máquina foram salvas em um arquivo executável.
+
+Q2
+Interpretador c: https://github.com/jpoirier/picoc
+Compilador python: https://github.com/Nuitka/Nuitka

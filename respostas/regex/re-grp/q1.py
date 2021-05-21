@@ -2,7 +2,6 @@ from datetime import datetime
 import os, re
 
 def nearest(items, pivot):
-    # print(items, pivot)
     return min(items, key=lambda x: abs(x - pivot))
 
 os.system('python ../../../arquivos/re-grp-q1.py >> text')
@@ -14,11 +13,7 @@ pattern = r"([0-9][0-9][0-9][0-9]-(0[0-9]|1[0-2])-(0[0-9]|[1-2][0-9]|30))(T([0-1
 dates = re.findall(pattern,put)
 concat_dates = []
 for date in dates:
-    # print(date)
     date = (date[0], date[3], date[6])
-    # print(''.join(date))
-    # print(date)
-    # print() 
     try:
         concat_dates.append(datetime.fromisoformat(''.join(date)).timestamp())
     except:
@@ -27,5 +22,3 @@ for date in dates:
 
 print(datetime.fromtimestamp(nearest(concat_dates, datetime.fromisoformat('2000-03-17').timestamp())))
 
-
-# print(concat_dates)

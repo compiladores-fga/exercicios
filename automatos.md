@@ -25,7 +25,7 @@ Resolva as duas questões para demonstrar competência.
 
 ## [nfa-repr]: Entender o mecanismo de operação de um autônomo não-determinístico finito
 
-Resolva as duas questões para demonstrar competência.
+Resolva as duas questões para demonstrar competência..
 
 **Q1)** O autômato abaixo representa uma linguagem que aceita números inteiros ou números com parte decimal. 
 
